@@ -1,0 +1,41 @@
+{
+  "name": "layerzero-move-oft-v2-utils",
+  "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "prettier": "npx prettier -w .",
+    "init-oft": "INIT_OFT=true ts-node scripts/oft.ts",
+    "init-oft-adapter": "INIT_OFT_ADAPTER=true ts-node scripts/oft.ts",
+    "register-oft": "REGISTER_OFT=true ts-node scripts/oft.ts"
+  },
+  "dependencies": {
+    "@iota/iota-sdk": "^1.6.1",
+    "@layerzerolabs/lz-definitions": "^3.0.146",
+    "@layerzerolabs/lz-iotal1-oft-sdk-v2": "^3.0.146",
+    "@layerzerolabs/lz-iotal1-sdk-v2": "^3.0.146",
+    "dotenv": "^17.2.3",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@layerzerolabs/lz-foundation": "^3.0.146",
+    "@layerzerolabs/lz-utilities": "^3.0.146",
+    "@layerzerolabs/lz-v2-utilities": "^3.0.146",
+    "@layerzerolabs/tsup-config-next": "^3.0.146",
+    "@layerzerolabs/typescript-config-next": "^3.0.146",
+    "@types/chai": "^4.3.11",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.5",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.2.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^5.0.5",
+    "smol-toml": "^1.2.0",
+    "ts-node": "^10.9.1",
+    "tsup": "^8.3.5",
+    "typescript": "~5.2.2",
+    "zx": "^8.1.3"
+  }
+}
