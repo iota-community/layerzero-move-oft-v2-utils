@@ -6,7 +6,7 @@ Implemented by IOTA Foundation.
 
 Utility scripts for LayerZero MoveVM OFT V2 that facilitate cross-chain sending of fungible tokens between IOTA MoveVM and other EVM(s).
 
-This document focus is on the MoveVM side while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils).
+This document focus is on the MoveVM side while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm).
 
 ## OFTAdapter and OFT contracts
 
@@ -65,7 +65,7 @@ yarn test
 
 ### Deploy OFTAdapter and OFT contracts on EVM
 
-See [instruction](https://github.com/iota-community/layerzero-oft-v2-utils?tab=readme-ov-file#deploy-contracts)
+See [instruction](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm?tab=readme-ov-file#deploy-contracts)
 
 ## Config on MoveVM
 
@@ -77,6 +77,10 @@ Specified in the file `config.json`.
 - Param `oftComposerManagerId` is specified by the objectType `OFTComposerManager` in file `@layerzerolabs\lz-iotal1-sdk-v2\deployments\iotal1-testnet\oft_common.json`.
 
 Copy the `.env.example` to `.env`.
+
+## Install
+
+`yarn`
 
 ## Scripts
 
@@ -113,4 +117,17 @@ oftComposerManagerId: 0x0f0b3c80ed9bfc559a4018fc37e3fefc690814fdfbb5125d7219768c
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 3kEDAW6M1ydEwebrR2GvQpRyBVwdVoyvNQmZFzCuw9Aj
+```
+
+### Set peer for OFT
+
+It's the same to register either OFT or OFTAdapter.
+
+`yarn set-peer-oft`
+
+```bash
+oapp.setPeerMoveCall
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: BiBWawGk5ggUxfwhFcubZMpY46W44tWySHhoRSwSh3Ws
 ```
