@@ -10,6 +10,7 @@
     "coin": {
       "coinPackage": "0x9f1eab668daaf3201e9c9546613d3e1d374b8b20a46fa680b813ce7011928fcb",
       "coinType": "0x9f1eab668daaf3201e9c9546613d3e1d374b8b20a46fa680b813ce7011928fcb::tusd::TUSD",
+      "coinDecimals": 9,
       "upgradeCap": "0xd7ac77f2e32bda1db1398a652fd584371c3d323be55de06984bb2dd27ea19482",
       "treasuryCapId": "0x19500a29ac990f6feab84e43ca4a53557e28ae1f79652899fd920d1df6c262f6",
       "denyCapId": "0x30988558d568ab4c62d0f7ea26cbc53ea37b44536f3ab0c5f03b67a64f745ef1",

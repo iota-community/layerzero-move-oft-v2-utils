@@ -6,7 +6,7 @@ Implemented by IOTA Foundation.
 
 Utility scripts for LayerZero MoveVM OFT V2 that facilitate cross-chain sending of fungible tokens between IOTA MoveVM and other EVM(s).
 
-This document focus is on the MoveVM side while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm).
+This document focus is on the MoveVM of the IOTA L1 `testnet` while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm).
 
 ## OFTAdapter and OFT contracts
 
@@ -76,7 +76,7 @@ Specified in the file `config.json`.
 - Param `oftObjectId` is only available after running the `init` for the deployed OFT contract.
 - Param `oftComposerManagerId` is specified by the objectType `OFTComposerManager` in file `@layerzerolabs\lz-iotal1-sdk-v2\deployments\iotal1-testnet\oft_common.json`.
 
-Copy the `.env.example` to `.env`.
+Copy the `.env.example` to `.env` and edit accordingly the params.
 
 ## Install
 
@@ -130,4 +130,33 @@ oapp.setPeerMoveCall
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: BiBWawGk5ggUxfwhFcubZMpY46W44tWySHhoRSwSh3Ws
+```
+
+### Send OFT from MoveVM to EVM
+
+Check the `.env` params. For example:
+
+```
+# Sepolia as EVM destination chain
+EVM_EID_AS_DEST_CHAIN=40161
+EVM_RECIPIENT_ADDRESS='0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA';
+EVM_TOKEN_AMOUNT_WITHOUT_DECIMALS=5
+```
+
+To send the existing coins on IOTA L1 testnet to Sepolia as destination EVM chain, run the following cmd:
+
+`yarn send-oft`
+
+```bash
+oft.quoteSend and oft.sendMoveCall
+oftQuote: {
+  limit: { minAmountLd: 0n, maxAmountLd: 18446744073709551615n },
+  feeDetails: [],
+  receipt: { amountSentLd: 5000000000n, amountReceivedLd: 5000000000n }
+}
+No OFT fees
+messagingFee: { nativeFee: 282390432n, zroFee: 0n }
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: AdHWc3TZqN1QQVD63Bn5UBerzZV1uLMGVcydPBNKijpm
 ```

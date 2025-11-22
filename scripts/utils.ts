@@ -2,6 +2,7 @@ import { IotaClient } from '@iota/iota-sdk/client';
 import { Ed25519Keypair } from '@iota/iota-sdk/keypairs/ed25519';
 import { Transaction } from '@iota/iota-sdk/transactions';
 import { toHex } from '@iota/iota-sdk/utils';
+import { arrayify } from '@layerzerolabs/lz-utilities';
 
 export const inspectTx = async (client: IotaClient, senderAddr: string, txb: Transaction) => {
   console.log('senderAddr:', senderAddr);
@@ -69,3 +70,15 @@ export const hexAddrToMoveVMBytesAddr = (address: string | null | undefined): Ui
   bytes32.set(bytes, 32 - bytes.length);
   return bytes32;
 };
+
+export function addressToBytes32(address: string): Uint8Array {
+  const cleanAddress = address.startsWith('0x') ? address.slice(2) : address;
+  return arrayify('0x' + cleanAddress.padStart(64, '0'));
+}
+
+export function formatAmount(amount: bigint, decimals: number): string {
+  const divisor = 10n ** BigInt(decimals);
+  const whole = amount / divisor;
+  const fraction = amount % divisor;
+  return `${whole}.${fraction.toString().padStart(decimals, '0')}`;
+}

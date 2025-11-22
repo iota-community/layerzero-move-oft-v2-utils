@@ -8,7 +8,7 @@
     "init-oft-adapter": "INIT_OFT_ADAPTER=true ts-node scripts/oft.ts",
     "register-oft": "REGISTER_OFT=true ts-node scripts/oft.ts",
     "set-peer-oft": "SET_PEER_OFT=true ts-node scripts/oft.ts",
-    "quote-send-oft": "QUOTE_SEND_OFT=true ts-node scripts/oft.ts"
+    "send-oft": "SEND_OFT=true ts-node scripts/oft.ts"
   },
   "dependencies": {
     "@iota/iota-sdk": "^1.6.1",
@@ -18,6 +18,7 @@
     "@layerzerolabs/lz-iotal1-sdk-v2": "^3.0.146",
     "dotenv": "^17.2.3",
     "fs": "^0.0.1-security",
+    "got": "^14.6.4",
     "path": "^0.12.7",
     "readline": "^1.3.0"
   },
