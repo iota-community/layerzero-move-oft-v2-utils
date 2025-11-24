@@ -41,13 +41,8 @@ async function quoteOFT(oft: OFT, sendParam: SendParam, sharedDecimals: number) 
 }
 
 async function main() {
-  const {
-    NETWORK,
-    MNEMONIC,
-    EVM_EID_AS_DEST_CHAIN,
-    EVM_RECIPIENT_ADDRESS,
-    EVM_TOKEN_AMOUNT_WITHOUT_DECIMALS,
-  } = process.env;
+  const { NETWORK, MNEMONIC, REMOTE_EID, REMOTE_RECIPIENT_ADDRESS, TOKEN_AMOUNT_WITHOUT_DECIMALS } =
+    process.env;
   const configData = NETWORK === 'mainnet' ? config.mainnet : config.testnet;
   const {
     sharedDecimals,
@@ -126,15 +121,15 @@ async function main() {
     // Get OApp instance from OFT
     const oapp = protocolSDK.getOApp(oftPackageId);
 
-    let peerAddress = '0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA';
+    let peerAddress = REMOTE_RECIPIENT_ADDRESS as string;
     peerAddress = basexToBytes32(peerAddress);
     const peerAddressBytes = hexAddrToAptosBytesAddr(peerAddress);
 
     // Set peer OFT on destination chain
     await oapp.setPeerMoveCall(
       tx,
-      40161, // remoteEid, // Remote chain endpoint ID (e.g., 30102 for Ethereum)
-      peerAddressBytes, // hexAddrToMoveVMBytesAddr('0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA'), // remotePeerBytes, // Remote OFT address as 32-byte array
+      Number(REMOTE_EID), // remoteEid,
+      peerAddressBytes,
     );
   } else if (process.env.SEND_OFT === 'true') {
     console.log('oft.quoteSend and oft.sendMoveCall');
@@ -143,13 +138,13 @@ async function main() {
 
     // Converted amount in local decimals
     // specified by `coinDecimals` of the original coin on source chain
-    const amountLd = BigInt(EVM_TOKEN_AMOUNT_WITHOUT_DECIMALS) * BigInt(10 ** coinDecimals);
+    const amountLd = BigInt(TOKEN_AMOUNT_WITHOUT_DECIMALS as string) * BigInt(10 ** coinDecimals);
     const minAmountLd = (amountLd * 99n) / 100n; // 1% slippage protection
 
     // Prepare send parameters
     const sendParam = {
-      dstEid: EVM_EID_AS_DEST_CHAIN, // Sepolia
-      to: addressToBytes32(EVM_RECIPIENT_ADDRESS), // Recipient address on Sepolia
+      dstEid: Number(REMOTE_EID as string), // Sepolia
+      to: addressToBytes32(REMOTE_RECIPIENT_ADDRESS as string), // Recipient address on Sepolia
       amountLd, // Amount in local decimals
       minAmountLd, // BigInt('5000000'), // Minimum amount (slippage protection)
       extraOptions, // new Uint8Array(0), // LayerZero execution options

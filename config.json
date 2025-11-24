@@ -13,14 +13,10 @@
       "coinDecimals": 9,
       "upgradeCap": "0xd7ac77f2e32bda1db1398a652fd584371c3d323be55de06984bb2dd27ea19482",
       "treasuryCapId": "0x19500a29ac990f6feab84e43ca4a53557e28ae1f79652899fd920d1df6c262f6",
-      "denyCapId": "0x30988558d568ab4c62d0f7ea26cbc53ea37b44536f3ab0c5f03b67a64f745ef1",
-      "metadataId": "0x00ea19e289208709a68f855126758b2b96c672996d560bc3250f5f9fce439883",
-      "regulatedCoinMetadataId": "0x651b264cc683f006eb193a177a26eb10a891d7920b78bc8e53139256af49edb0"
+      "metadataId": "0x00ea19e289208709a68f855126758b2b96c672996d560bc3250f5f9fce439883"
     },
     "oftObjectId": "0xc36df91c6eccc8a3a026ead7656abb7a36ab4210b2575a7dc27199eeec1f3de4",
     "oftComposerManagerId": "0x0f0b3c80ed9bfc559a4018fc37e3fefc690814fdfbb5125d7219768c7ca5a1f6"
   },
-  "mainnet": {
-    "oftPackageId": "0xb9bee15ab88b7a5c7018f14ffd669ff60f2853f9fd782134f7df3677ed15da2d"
-  }
+  "mainnet": {}
 }
