@@ -1,9 +1,9 @@
 // Import OFT from npm lib
-// import { OFT } from '@layerzerolabs/lz-iotal1-oft-sdk-v2';
+import { OFT, SendParam } from '@layerzerolabs/lz-iotal1-oft-sdk-v2';
 
 // Or import OFT from the available source code extracted from here:
 // https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-oft-sdk-v2
-import { OFT, SendParam } from '../iotal1-oft-sdk-v2';
+// import { OFT, SendParam } from '../iotal1-oft-sdk-v2';
 
 import { SDK, validateTransaction } from '@layerzerolabs/lz-iotal1-sdk-v2';
 import { Stage } from '@layerzerolabs/lz-definitions';
@@ -41,7 +41,7 @@ async function quoteOFT(oft: OFT, sendParam: SendParam, sharedDecimals: number) 
 }
 
 async function main() {
-  const { NETWORK, MNEMONIC, REMOTE_EID, REMOTE_RECIPIENT_ADDRESS, TOKEN_AMOUNT_WITHOUT_DECIMALS } =
+  const { NETWORK, MNEMONIC, REMOTE_EID, REMOTE_PEER_ADDRESS, REMOTE_RECIPIENT_ADDRESS, TOKEN_AMOUNT_WITHOUT_DECIMALS } =
     process.env;
   const configData = NETWORK === 'mainnet' ? config.mainnet : config.testnet;
   const {
@@ -117,19 +117,16 @@ async function main() {
     );
   } else if (process.env.SET_PEER_OFT === 'true') {
     console.log('oapp.setPeerMoveCall');
+    console.log('REMOTE_EID:', REMOTE_EID, ', REMOTE_PEER_ADDRESS:', REMOTE_PEER_ADDRESS);
 
     // Get OApp instance from OFT
     const oapp = protocolSDK.getOApp(oftPackageId);
-
-    let peerAddress = REMOTE_RECIPIENT_ADDRESS as string;
-    peerAddress = basexToBytes32(peerAddress);
-    const peerAddressBytes = hexAddrToAptosBytesAddr(peerAddress);
 
     // Set peer OFT on destination chain
     await oapp.setPeerMoveCall(
       tx,
       Number(REMOTE_EID), // remoteEid,
-      peerAddressBytes,
+      addressToBytes32(REMOTE_PEER_ADDRESS as string),
     );
   } else if (process.env.SEND_OFT === 'true') {
     console.log('oft.quoteSend and oft.sendMoveCall');
