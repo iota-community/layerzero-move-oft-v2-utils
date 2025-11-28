@@ -11,6 +11,7 @@ This document focuses on the MoveVM of the IOTA L1 `testnet` based on this [refe
 For installation, run the cmd `yarn`.
 
 For procedure of sending tokens cross-chain, it includes the following steps:
+
 - configuration
 - deployment
 - setup
@@ -31,4 +32,3 @@ See [here](./README_OFT_setup.md)
 ## OFT send
 
 See [here](./README_OFT_send.md)
-

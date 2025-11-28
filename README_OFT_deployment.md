@@ -40,8 +40,8 @@ After deployment, take note the following created stuff as config params in the 
 
 **Get the oftComposerManagerId**
 
-- Find the OFT packageID on the explorer and then navigate to the module `Oft ptb builder` to find out the the `oft_common` packageID based on the `oft_composer_manager`. 
-- For example `use 7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2::oft_composer_manager;`, the `oft_common` packageID is `7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2`. 
+- Find the OFT packageID on the explorer and then navigate to the module `Oft ptb builder` to find out the the `oft_common` packageID based on the `oft_composer_manager`.
+- For example `use 7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2::oft_composer_manager;`, the `oft_common` packageID is `7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2`.
 - From the `oft_common` packageID on the explorer, find out its deployment tx from which it's possible to find the `oft_composer_manager::OFTComposerManager` objectID.
 
 **Run test**

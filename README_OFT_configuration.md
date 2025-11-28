@@ -17,19 +17,21 @@ The config info is referenced from:
 
 ## Preset configs for different pathways
 
-- [Pathway from IOTA L1 testnet to Sepolia EVM](./config_IOTAL1_EVM.json)
-- [Pathway from Sepolia EVM to IOTA L1 testnet](./config_EVM_IOTAL1.json)
+- [Pathway from IOTA L1 testnet to Sepolia EVM](./config_IOTAL1_EVM.ts)
+- [Pathway from Sepolia EVM to IOTA L1 testnet](./config_EVM_IOTAL1.ts)
 
 ## Config params
 
-Copy one of the `config_xyz.json` to `config.json` and edit accordingly as follows:
+Copy one of the `config_xyz.ts` to `config.ts` and edit accordingly as follows:
 
 - `sharedDecimals`: usually `6` decimals and must not be greater than the local decimals of the existing coins
 - `oft`: obtained after having deployed the OFT Move module as described above
 - `coin`: config params related to the existing coin
 - `oftObjectId`: obtained after running the `init` step as described below
 - `oftComposerManagerId`: [OFTComposerManager](https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-sdk-v2?activeTab=code) -> file `object-OFTComposerManager.json`
-- `peerAddressOnRemoteChain`: OFTAdapter or OFT deployed address on remote chain
+- `remoteChain`:
+  - `EID`: EID of the remote chain
+  - `peerAddress`: OFTAdapter or OFT Solidty contract address or Move package ID on the remote chain.
 
 Copy the `.env.example` to `.env` and edit accordingly the params. Example:
 
@@ -41,7 +43,6 @@ NETWORK='testnet'
 MNEMONIC='put here your own mnemonic'
 
 # Sepolia as EVM destination chain
-REMOTE_EID=40161
 REMOTE_RECIPIENT_ADDRESS='0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA';
 TOKEN_AMOUNT_WITHOUT_DECIMALS=5
 ```

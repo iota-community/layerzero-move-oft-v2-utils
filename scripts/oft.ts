@@ -10,19 +10,16 @@ import { Stage } from '@layerzerolabs/lz-definitions';
 import { Transaction } from '@iota/iota-sdk/transactions';
 import { IotaClient } from '@iota/iota-sdk/client';
 import { Ed25519Keypair } from '@iota/iota-sdk/keypairs/ed25519';
-import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { addressToBytes32, executeTx, formatAmount } from './utils';
+import config from '../config';
 
 import { Options } from '@layerzerolabs/lz-v2-utilities';
-import { hexAddrToAptosBytesAddr, basexToBytes32 } from '@layerzerolabs/devtools-move';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 });
-
-const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../config.json'), 'utf-8'));
 
 async function quoteOFT(oft: OFT, sendParam: SendParam, sharedDecimals: number) {
   const oftQuote = await oft.quoteOft(sendParam);
@@ -41,7 +38,7 @@ async function quoteOFT(oft: OFT, sendParam: SendParam, sharedDecimals: number) 
 }
 
 async function main() {
-  const { NETWORK, MNEMONIC, REMOTE_EID, REMOTE_PEER_ADDRESS, REMOTE_RECIPIENT_ADDRESS, TOKEN_AMOUNT_WITHOUT_DECIMALS } =
+  const { NETWORK, MNEMONIC, REMOTE_RECIPIENT_ADDRESS, TOKEN_AMOUNT_WITHOUT_DECIMALS } =
     process.env;
   const configData = NETWORK === 'mainnet' ? config.mainnet : config.testnet;
   const {
@@ -50,6 +47,7 @@ async function main() {
     coin: { coinType, treasuryCapId, metadataId, coinDecimals },
     oftObjectId,
     oftComposerManagerId,
+    remoteChain,
   } = configData;
 
   const signer = Ed25519Keypair.deriveKeypair(MNEMONIC as string);
@@ -117,7 +115,7 @@ async function main() {
     );
   } else if (process.env.SET_PEER_OFT === 'true') {
     console.log('oapp.setPeerMoveCall');
-    console.log('REMOTE_EID:', REMOTE_EID, ', REMOTE_PEER_ADDRESS:', REMOTE_PEER_ADDRESS);
+    console.log('remoteChain:', remoteChain);
 
     // Get OApp instance from OFT
     const oapp = protocolSDK.getOApp(oftPackageId);
@@ -125,8 +123,8 @@ async function main() {
     // Set peer OFT on destination chain
     await oapp.setPeerMoveCall(
       tx,
-      Number(REMOTE_EID), // remoteEid,
-      addressToBytes32(REMOTE_PEER_ADDRESS as string),
+      remoteChain.EID, // remoteEid,
+      addressToBytes32(remoteChain.peerAddress as string),
     );
   } else if (process.env.SEND_OFT === 'true') {
     console.log('oft.quoteSend and oft.sendMoveCall');
@@ -140,7 +138,7 @@ async function main() {
 
     // Prepare send parameters
     const sendParam = {
-      dstEid: Number(REMOTE_EID as string), // Sepolia
+      dstEid: remoteChain.EID, // Sepolia
       to: addressToBytes32(REMOTE_RECIPIENT_ADDRESS as string), // Recipient address on Sepolia
       amountLd, // Amount in local decimals
       minAmountLd, // BigInt('5000000'), // Minimum amount (slippage protection)
