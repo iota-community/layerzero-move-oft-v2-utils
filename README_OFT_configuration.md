@@ -22,13 +22,17 @@ The config info is referenced from:
 
 ## Config params
 
+2 types of config files:
+- `.ts`
+- `.env`
+
 Copy one of the `config_xyz.ts` to `config.ts` and edit accordingly as follows:
 
 - `sharedDecimals`: usually `6` decimals and must not be greater than the local decimals of the existing coins
 - `oft`: obtained after having deployed the OFT Move module as described above
 - `coin`: config params related to the existing coin
 - `oftObjectId`: obtained after running the `init` step as described below
-- `oftComposerManagerId`: [OFTComposerManager](https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-sdk-v2?activeTab=code) -> file `object-OFTComposerManager.json`
+- `oftComposerManagerId`: see [here](./README_OFT_deployment.md#get-the-oftcomposermanagerid)
 - `remoteChain`:
   - `EID`: EID of the remote chain
   - `peerAddress`: OFTAdapter or OFT Solidty contract address or Move package ID on the remote chain.

@@ -18,7 +18,9 @@ For `brand-new` fungible tokens to be launched, OFT standard can be leveraged to
 
 ## Deploy OFTAdapter or OFT package on IOTA MoveVM
 
-On IOTA MoveVM, both OFTAdapter and OFT contracts use the same [Move module](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/iota/contracts/oapps/oft/oft). The difference will come during the `init` process (see later section). To deploy it, run the following cmds
+On IOTA MoveVM, both OFTAdapter and OFT contracts use the same [Move module](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/iota/contracts/oapps/oft/oft). The difference will come during the `init` process (see later section). 
+
+No config params needed, to deploy, run the following cmds
 
 ```bash
 git clone https://github.com/LayerZero-Labs/LayerZero-v2.git
@@ -30,7 +32,7 @@ iota client publish
 
 **Notice**
 
-After deployment, take note the following created stuff as config params in the file [config.json](./config.json):
+After deployment, take note the following created stuff as config params in the file [config.ts](./config.ts):
 
 - OFT packageID
 - oft_impl::OFTInitTicket
@@ -38,9 +40,9 @@ After deployment, take note the following created stuff as config params in the 
 - package::UpgradeCap
 - oftComposerManagerId: `see below`
 
-**Get the oftComposerManagerId**
+### Get the oftComposerManagerId
 
-- Find the OFT packageID on the explorer and then navigate to the module `Oft ptb builder` to find out the the `oft_common` packageID based on the `oft_composer_manager`.
+- Find the OFT packageID on the explorer and then navigate to the module `Oft ptb builder` to find out the `oft_common` packageID based on the `oft_composer_manager`.
 - For example `use 7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2::oft_composer_manager;`, the `oft_common` packageID is `7799eaad07b597b7c19cadb29fce3d2cc223f77be1dbf143717ca7e2ee2266e2`.
 - From the `oft_common` packageID on the explorer, find out its deployment tx from which it's possible to find the `oft_composer_manager::OFTComposerManager` objectID.
 
