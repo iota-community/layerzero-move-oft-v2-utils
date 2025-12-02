@@ -7,6 +7,7 @@ The setup includes:
 - init as OFTAdapter or as OFT
 - register OFT
 - set remote peer
+- set config for DVN
 
 ## Init
 
@@ -142,7 +143,7 @@ executeTx - Tx hash: BAYrzgbpQ9K7SSbpCm56hoBNfxAkzLQNknv4wnAb8T3U
 
 Log example on IOTA L1 mainnet as dest chain:
 
-```bash
+```
 oapp.setPeerMoveCall
 remoteChain: {
   EID: 30284,
@@ -151,4 +152,36 @@ remoteChain: {
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: gVV9HyKnwqFDC97AqTcabwZv4REiZLXaHyLnhWRQG3r
+```
+
+## Set config for DVN (only optional)
+
+It's the same to set config for either OFT or OFTAdapter.
+
+[Reference source](https://docs.layerzero.network/v2/developers/sui/configuration/dvn-executor-config#dvn-configuration).
+
+Needed input params in [config.ts](./config.ts):
+
+- setConfig
+  - `DVNs`
+  - `confirmations`
+
+and from `.env`:
+
+- REMOTE_RECIPIENT_ADDRESS
+- TOKEN_AMOUNT_WITHOUT_DECIMALS
+
+Cmd:
+
+`yarn set-config`
+
+Log example on IOTA L1 mainnet as dest chain:
+
+```
+oapp.setConfigMoveCall
+ulnLib: 0x042e3bb837e5528e495124542495b9df5016acd011d89838ae529db5a814499e
+objUlnLib: 0x8b8083bc0e96840f20d5d0488381ef1788dd5f8a668eb5c63faccad04092a7aa
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: GD1whAwCgZ9EokKCw9MdfAtbNYW7xJMd8Kxt8X1rnKhw
 ```

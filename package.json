@@ -8,6 +8,7 @@
     "init-oft-adapter": "INIT_OFT_ADAPTER=true ts-node scripts/oft.ts",
     "register-oft": "REGISTER_OFT=true ts-node scripts/oft.ts",
     "set-peer-oft": "SET_PEER_OFT=true ts-node scripts/oft.ts",
+    "set-config": "SET_CONFIG=true ts-node scripts/oft.ts",
     "send-oft": "SEND_OFT=true ts-node scripts/oft.ts"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@layerzerolabs/lz-definitions": "^3.0.146",
     "@layerzerolabs/lz-iotal1-oft-sdk-v2": "^3.0.146",
     "@layerzerolabs/lz-iotal1-sdk-v2": "^3.0.146",
+    "bignumber.js": "^9.3.1",
     "dotenv": "^17.2.3",
     "got": "^14.6.4",
     "path": "^0.12.7",

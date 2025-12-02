@@ -5,7 +5,14 @@ import { OFT, SendParam } from '@layerzerolabs/lz-iotal1-oft-sdk-v2';
 // https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-oft-sdk-v2
 // import { OFT, SendParam } from '../iotal1-oft-sdk-v2';
 
-import { SDK, validateTransaction } from '@layerzerolabs/lz-iotal1-sdk-v2';
+import {
+  SDK,
+  validateTransaction,
+  OAppUlnConfigBcs,
+  PACKAGE_ULN_302_ADDRESS,
+  OBJECT_ULN_302_ADDRESS,
+  PACKAGE_DVN_LAYERZERO_ADDRESS,
+} from '@layerzerolabs/lz-iotal1-sdk-v2';
 import { Stage } from '@layerzerolabs/lz-definitions';
 import { Transaction } from '@iota/iota-sdk/transactions';
 import { IotaClient } from '@iota/iota-sdk/client';
@@ -14,7 +21,7 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { addressToBytes32, executeTx, formatAmount } from './utils';
 import config from '../config';
-
+import BigNumber from 'bignumber.js';
 import { Options } from '@layerzerolabs/lz-v2-utilities';
 
 dotenv.config({
@@ -48,6 +55,7 @@ async function main() {
     oftObjectId,
     oftComposerManagerId,
     remoteChain,
+    setConfig,
   } = configData;
 
   const signer = Ed25519Keypair.deriveKeypair(MNEMONIC as string);
@@ -126,6 +134,63 @@ async function main() {
       remoteChain.EID, // remoteEid,
       addressToBytes32(remoteChain.peerAddress as string),
     );
+  } else if (process.env.SET_CONFIG === 'true') {
+    // Reference: https://docs.layerzero.network/v2/developers/sui/configuration/dvn-executor-config#dvn-configuration
+
+    console.log('oapp.setConfigMoveCall');
+
+    // Get OApp instance from OFT
+    const oapp = protocolSDK.getOApp(oftPackageId);
+
+    // Encode configuration
+    const config = OAppUlnConfigBcs.serialize({
+      use_default_confirmations: false,
+      use_default_required_dvns: false,
+      use_default_optional_dvns: true,
+      uln_config: {
+        confirmations: setConfig.confirmations,
+        required_dvns: setConfig.DVNs,
+        optional_dvns: [],
+        optional_dvn_threshold: 0,
+      },
+    }).toBytes();
+
+    const ulnLib = PACKAGE_ULN_302_ADDRESS[NETWORK === 'mainnet' ? Stage.MAINNET : Stage.TESTNET];
+    console.log('ulnLib:', ulnLib);
+
+    const objUlnLib = OBJECT_ULN_302_ADDRESS[NETWORK === 'mainnet' ? Stage.MAINNET : Stage.TESTNET];
+    console.log('objUlnLib:', objUlnLib);
+
+    const CONFIG_TYPE_SEND_ULN = 2;
+    const CONFIG_TYPE_RECEIVE_ULN = 3;
+
+    const configCallTypeSend = await oapp.setConfigMoveCall(
+      tx,
+      ulnLib as string,
+      remoteChain.EID, // Remote EID
+      CONFIG_TYPE_SEND_ULN,
+      config,
+    );
+
+    tx.moveCall({
+      target: `${ulnLib}::uln_302::set_config`,
+      arguments: [tx.object(objUlnLib as string), configCallTypeSend],
+    });
+
+    const configCallTypeReceive = await oapp.setConfigMoveCall(
+      tx,
+      ulnLib as string,
+      remoteChain.EID, // Remote EID
+      CONFIG_TYPE_RECEIVE_ULN,
+      config,
+    );
+
+    tx.moveCall({
+      target: `${ulnLib}::uln_302::set_config`,
+      arguments: [tx.object(objUlnLib as string), configCallTypeReceive],
+    });
+
+    // No need to set for "executor"
   } else if (process.env.SEND_OFT === 'true') {
     console.log('oft.quoteSend and oft.sendMoveCall');
 
@@ -133,15 +198,17 @@ async function main() {
 
     // Converted amount in local decimals
     // specified by `coinDecimals` of the original coin on source chain
-    const amountLd = BigInt(TOKEN_AMOUNT_WITHOUT_DECIMALS as string) * BigInt(10 ** coinDecimals);
-    const minAmountLd = (amountLd * 99n) / 100n; // 1% slippage protection
+    const amountLd: BigNumber = BigNumber(TOKEN_AMOUNT_WITHOUT_DECIMALS as string).multipliedBy(
+      10 ** coinDecimals,
+    );
+    const minAmountLd: BigNumber = amountLd.multipliedBy(99n).dividedBy(100n); // 1% slippage protection
 
     // Prepare send parameters
     const sendParam = {
       dstEid: remoteChain.EID, // Sepolia
       to: addressToBytes32(REMOTE_RECIPIENT_ADDRESS as string), // Recipient address on Sepolia
-      amountLd, // Amount in local decimals
-      minAmountLd, // BigInt('5000000'), // Minimum amount (slippage protection)
+      amountLd: BigInt(amountLd.toFixed(0)), // Amount in local decimals
+      minAmountLd: BigInt(minAmountLd.toFixed(0)), // Minimum amount (slippage protection)
       extraOptions, // new Uint8Array(0), // LayerZero execution options
       composeMsg: new Uint8Array(0), // Optional compose message
       oftCmd: new Uint8Array(0), // Optional OFT command (unused in default OFT)
