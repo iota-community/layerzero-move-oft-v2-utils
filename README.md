@@ -32,3 +32,7 @@ See [here](./README_OFT_setup.md)
 ## OFT send
 
 See [here](./README_OFT_send.md)
+
+## Tested pathway result
+
+See [here](./README_pathways.md)

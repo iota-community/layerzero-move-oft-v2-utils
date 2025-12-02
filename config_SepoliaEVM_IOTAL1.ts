@@ -1,4 +1,4 @@
-// Pathway from Sepolia EVM to IOTA L1
+// Pathway from Sepolia EVM (OFTAdapter) to IOTA L1
 
 export default {
   testnet: {

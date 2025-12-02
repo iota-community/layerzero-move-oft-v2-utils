@@ -13,6 +13,8 @@ The setup includes:
 
 ### Init as OFTAdapter on IOTA L1 as source chain
 
+**For existing coins**
+
 Needed input params in [config.ts](./config.ts):
 
 - coinType
@@ -41,6 +43,10 @@ After the `init` completion, the `oftInitTicketId` object will be destroyed to p
 Set the `oftObjectId` (from the tx hash on block explorer) in the file `config.ts` for next step.
 
 ### Init as OFT on IOTA L1 as dest chain
+
+**For newly-deployed coins**
+
+Go in the folder `mockcoin` to deploy a new coin if needed.
 
 Needed input params in [config.ts](./config.ts):
 
@@ -73,11 +79,18 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: AEJRDdrkfppKUWAPnYug8oUaHJoJAHMPM5ussi9skfSz
 ```
 
+```bash
+oft.initOftMoveCall
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: DJgejLkMmBxcRa4eBtE2HV3FH6BygsQATN4C8jU6NqPc
+```
+
 **Notice**
 
 After the `init` completion, the `oftInitTicketId` object will be destroyed to prevent further `init`. This means that, one `oftInitTicketId` can be used only once to `init`.
 
-Set the `oftObjectId` (from the tx hash on block explorer) in the file `config.ts` for next step.
+From the `init` tx hash on block explorer, find the `oftObjectId` to set it in the file `config.ts` for next step.
 
 ## Register OFT
 
@@ -110,11 +123,19 @@ Log example on IOTA L1 mainnet as dest chain:
 ```bash
 oft.registerOAppMoveCall
 oftComposerManagerId: 0xfe5be5a2d5b11e635e3e4557bb125fb24a3dd09111eded06fd6058b2aee1d054
-(node:497636) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 25zDfKR18UASxkeW3n9sPzb58F22KzUVYnVgmwUBN3AR
+```
+
+Log example on IOTA L1 mainnet as dest chain:
+
+```bash
+oft.registerOAppMoveCall
+oftComposerManagerId: 0xfe5be5a2d5b11e635e3e4557bb125fb24a3dd09111eded06fd6058b2aee1d054
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: 1c3K1vh9YcagqmRsXHfUfPifa1HSrZM63NnoJdkzXCm
 ```
 
 ## Set peer for OFT
@@ -126,6 +147,7 @@ Needed input params in [config.ts](./config.ts):
 - remoteChain
   - EID: EID of the remote chain
   - peerAddress: OFTAdapter or OFT address on the remote chain
+    - !! need to perform [deployment and setup](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm) on the dest chain !!
 
 Cmd:
 
@@ -146,15 +168,19 @@ Log example on IOTA L1 mainnet as dest chain:
 ```
 oapp.setPeerMoveCall
 remoteChain: {
-  EID: 30284,
-  peerAddress: '0x02AE4418F0FbcbE383b4eD103cf6B88B24542f4C'
+  EID: 30110,
+  peerAddress: '0x50721AaD21A49b1024E985Bd99d4904326d9b951'
 }
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
-executeTx - Tx hash: gVV9HyKnwqFDC97AqTcabwZv4REiZLXaHyLnhWRQG3r
+executeTx - Tx hash: 2rG6QXCDcwg8uFW3YzUP9fBJZL7zoYG7aFjEbc4mxqqu
 ```
 
-## Set config for DVN (only optional)
+Log example on IOTA L1 mainnet as dest chain:
+
+```
+
+## Set config for DVN (only optional, just skip it)
 
 It's the same to set config for either OFT or OFTAdapter.
 

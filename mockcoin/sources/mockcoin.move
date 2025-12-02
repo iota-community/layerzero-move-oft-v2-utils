@@ -13,10 +13,10 @@ public struct MOCKCOIN has drop {}
 // === Constants ===
 
 const DECIMALS: u8 = 9;
-const NAME: vector<u8> = b"MUSDT";
-const SYMBOL: vector<u8> = b"MUSDT";
+const NAME: vector<u8> = b"USDTmd";
+const SYMBOL: vector<u8> = b"USDTmd";
 const DESCRIPTION: vector<u8> = b"Mock USDT";
-const ICON_URL: vector<u8> = b"https://images.iotaspam.io/4.png";
+const ICON_URL: vector<u8> = b"https://images.iotaspam.io/5.png";
 
 fun init(witness: MOCKCOIN, ctx: &mut TxContext) {
     let (treasury, metadata) = create_currency(

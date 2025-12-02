@@ -36,7 +36,7 @@ Copy one of the `config_xyz.ts` to `config.ts` and edit accordingly as follows:
 - `remoteChain`:
   - `EID`: EID of the remote chain
   - `peerAddress`: OFTAdapter or OFT Solidty contract address or Move package ID on the remote chain.
-- `setConfig`: only optional
+- `setConfig`:
   - `DVNs`
   - `confirmations`
 
