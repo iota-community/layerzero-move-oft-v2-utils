@@ -37,7 +37,7 @@ Copy one of the `config_xyz.ts` to `config.ts` and edit accordingly as follows:
   - `EID`: EID of the remote chain
   - `peerAddress`: OFTAdapter or OFT Solidty contract address or Move package ID on the remote chain.
 - `setConfig`:
-  - `DVNs`
+  - `DVNs`: The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
   - `confirmations`
 
 Copy the `.env.example` to `.env` and edit accordingly the params. Example:

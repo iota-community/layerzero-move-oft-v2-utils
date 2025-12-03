@@ -176,11 +176,7 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: 2rG6QXCDcwg8uFW3YzUP9fBJZL7zoYG7aFjEbc4mxqqu
 ```
 
-Log example on IOTA L1 mainnet as dest chain:
-
-```
-
-## Set config for DVN (only optional, just skip it)
+## Set config for DVN (!! mandatory !!)
 
 It's the same to set config for either OFT or OFTAdapter.
 
@@ -189,13 +185,8 @@ It's the same to set config for either OFT or OFTAdapter.
 Needed input params in [config.ts](./config.ts):
 
 - setConfig
-  - `DVNs`
+  - `DVNs`: The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
   - `confirmations`
-
-and from `.env`:
-
-- REMOTE_RECIPIENT_ADDRESS
-- TOKEN_AMOUNT_WITHOUT_DECIMALS
 
 Cmd:
 
@@ -210,4 +201,15 @@ objUlnLib: 0x8b8083bc0e96840f20d5d0488381ef1788dd5f8a668eb5c63faccad04092a7aa
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: GD1whAwCgZ9EokKCw9MdfAtbNYW7xJMd8Kxt8X1rnKhw
+```
+
+Log example on IOTA L1 mainnet as dest chain with source chain of Arbitrum:
+
+```
+oapp.setConfigMoveCall
+ulnLib: 0x042e3bb837e5528e495124542495b9df5016acd011d89838ae529db5a814499e
+objUlnLib: 0x8b8083bc0e96840f20d5d0488381ef1788dd5f8a668eb5c63faccad04092a7aa
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: 9Ljku96FriTFzTdC3TcZ2N1UAtPR8tRc9KLxyHgKF7oB
 ```

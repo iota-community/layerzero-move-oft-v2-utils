@@ -22,6 +22,6 @@ https://layerzeroscan.com/tx/0xb7abd5db36d8f6407c707dff2e8f08d4d11e4188a16b39f02
 
 **From IOTA L1 back to Arbitrum EVM**
 
-https://layerzeroscan.com/tx/GJ6nqAk9g5qU4JubsEq2obq3Zhk3n2qBcZc41mrW4msq
+https://layerzeroscan.com/tx/9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 
 ## Testnet

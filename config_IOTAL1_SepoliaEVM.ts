@@ -23,6 +23,11 @@ export default {
       EID: 40161,
       peerAddress: '0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA',
     },
+    setConfig: {
+      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+      DVNs: [],
+      confirmations: 0,
+    },
   },
   mainnet: {
     sharedDecimals: 6,
@@ -45,6 +50,11 @@ export default {
     remoteChain: {
       EID: 0,
       peerAddress: '',
+    },
+    setConfig: {
+      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+      DVNs: [],
+      confirmations: 0,
     },
   },
 };

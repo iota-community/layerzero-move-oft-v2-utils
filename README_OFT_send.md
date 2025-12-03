@@ -60,11 +60,11 @@ oft.quoteSend and oft.sendMoveCall
 oftQuote: {
   limit: { minAmountLd: 0n, maxAmountLd: 18446744073709551615n },
   feeDetails: [],
-  receipt: { amountSentLd: 345600000000n, amountReceivedLd: 345600000000n }
+  receipt: { amountSentLd: 30300000000n, amountReceivedLd: 30300000000n }
 }
 No OFT fees
-messagingFee: { nativeFee: 634426455n, zroFee: 0n }
+messagingFee: { nativeFee: 704377150n, zroFee: 0n }
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
-executeTx - Tx hash: GJ6nqAk9g5qU4JubsEq2obq3Zhk3n2qBcZc41mrW4msq
+executeTx - Tx hash: 9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 ```

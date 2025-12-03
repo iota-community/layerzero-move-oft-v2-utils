@@ -24,6 +24,7 @@ export default {
       peerAddress: '',
     },
     setConfig: {
+      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: [],
       confirmations: 0,
     },
@@ -52,9 +53,10 @@ export default {
       peerAddress: '0x50721AaD21A49b1024E985Bd99d4904326d9b951',
     },
     setConfig: {
+      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: [
-        '0x50e159c13f1222f7eea85c718f67b20146ef2485f844b23ffa15719adc97080a',
-        '0xa560697328ccb5dc3f3f8e8a2c41e282827060da7a29971d933e9aa405c2ba7f',
+        '0xa560697328ccb5dc3f3f8e8a2c41e282827060da7a29971d933e9aa405c2ba7f', // LZ Labs
+        '0x50e159c13f1222f7eea85c718f67b20146ef2485f844b23ffa15719adc97080a', // Nethermind
       ],
       confirmations: 25,
     },
