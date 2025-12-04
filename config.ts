@@ -4,29 +4,29 @@ export default {
   testnet: {
     sharedDecimals: 6,
     oft: {
-      oftPackageId: '0xd8c65e370e22e7d5c0abc7ed58703f30b8cce39410faed79dffdc5d79ce56c04',
-      oappObjectId: '0x1e58b8fdbb33a7d1ffe686856c24d5be89887388452398e9035b07a6bf20ed60',
-      upgradeCap: '0xb3b427c605536615d04cbf9da68a0fd693bd40bbc414e6a2fa7a7be4972958ab',
-      oftInitTicketId: '0x492cae9af0d98c085e15f3d00ee88ee7959f05cadac9053fee069bb12d9220fe',
+      oftPackageId: '0x2d0012a96534315f51af8782773ce8afc5df0bb46df28f034c58da6a02a18d94',
+      oappObjectId: '0xa16bcce4bc7daac4891a8f423ae2e009d2a35b41b0f5e85ebccf8ead2fd9005a',
+      upgradeCap: '0x127fdf8742e5f429b20154ee33c709d659f847ec9a228bfae012e3a5d2294667',
+      oftInitTicketId: '0xa8a96e4eadc504fbe027e839730b900714c471cbc0f680ab291e2f65f85a084e',
     },
     coin: {
-      coinPackage: '0xafefb0ff0b3e18b29e6162dd9cb944dfed6f61823095214df0ceaa159c66b6db',
-      coinType: '0xafefb0ff0b3e18b29e6162dd9cb944dfed6f61823095214df0ceaa159c66b6db::mockcoin::MOCKCOIN',
+      coinPackage: '0xdb4c36d643718262fd5c9936abd6ba73e10190ae091d3713eba2bed58aada7ec',
+      coinType: '0xdb4c36d643718262fd5c9936abd6ba73e10190ae091d3713eba2bed58aada7ec::mockcoin::MOCKCOIN',
       coinDecimals: 9,
-      upgradeCap: '0xd2607eb149c62f02d6b1745528e4d14f4c391e0a945dcb725a7772f7fe05964a',
-      treasuryCapId: '0x86dd0d9a3e3fd3dbf96bb9444a1b097151c5c297cb38d182e16f9407bacdd77c',
-      metadataId: '0x19ac963749ab0be1b47601a3c8b15ef1f7331d75ebf87245f3cc05ae38c5f141',
+      upgradeCap: '0xa7cd2c2038e6aec360dc990bcd77560009bb8268c1673b3ce0b21f89ca4b85d9',
+      treasuryCapId: '0x0668785914ab9119f4ab615bf8391114c21b1722226f72bd29394b4bef97d5ef',
+      metadataId: '0xd1e7d18bc73440de6fc05a33eb62fdfe5d0d2abe642c4b01798af367f7092eaf',
     },
-    oftObjectId: '0xd1409db010bfde996f66e1f79c11dabbccd63e34a5da9e8649d2350200eddbce',
+    oftObjectId: '0x69038c8196c9f9cb4812031ff60f87185323d5e4c91893df5c031705ec0f059a',
     oftComposerManagerId: '0x90384f5f6034604f76ac99bbdd25bc3c9c646a6e13a27f14b530733a8e98db99',
     remoteChain: {
-      EID: 40378, // Sui testnet
-      peerAddress: '0xed7133e37b167b761b189b2e7a1dcf1a557c1ae5e9757c03ab89a455878e8f50',
+      EID: 40423, // IOTA L1 testnet
+      peerAddress: '0x6c8ce1132b6943655c672e6accfc9daa90fff06955f932625b1d4aa5640dff52',
     },
     setConfig: {
       // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: ['0x1356fef0c7325536e289e53cc545219cbfbd1490ed762c8d8efb97efa6cfb856'],
-      confirmations: 0,
+      confirmations: 1,
     },
   },
   mainnet: {

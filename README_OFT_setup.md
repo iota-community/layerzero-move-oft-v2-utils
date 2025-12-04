@@ -88,7 +88,7 @@ Log example on Sui testnet as dest chain:
 
 ```bash
 oft.initOftMoveCall
-result.digest: EVgaS2LXdHZUycayu5nVWCQkfdPbnKfvS66zFLboVtPG
+result.digest: BLozaQr2vLxfQvTgXLCNdGpQ8p2oDYqidbu3mnMuTfJ
 ```
 
 **Notice**
@@ -148,7 +148,7 @@ Log example on Sui testnet as dest chain:
 ```bash
 oft.registerOAppMoveCall
 oftComposerManagerId: 0x90384f5f6034604f76ac99bbdd25bc3c9c646a6e13a27f14b530733a8e98db99
-result digest: CqFAT2iwPnXihpFjq3p7oJsSRL7PTzkC9rTdoDt5WoPm
+result digest: EfVGVyg2zsA8iKzxzkUUkBPitZWTdso5mkqXYoQ8QwGs
 ```
 
 ## Set peer for OFT
@@ -194,10 +194,10 @@ Log example on Sui testnet as dest chain:
 ```
 oapp.setPeerMoveCall
 remoteChain: {
-  EID: 40378,
-  peerAddress: '0xed7133e37b167b761b189b2e7a1dcf1a557c1ae5e9757c03ab89a455878e8f50'
+  EID: 40423,
+  peerAddress: '0x6c8ce1132b6943655c672e6accfc9daa90fff06955f932625b1d4aa5640dff52'
 }
-result digest: HaPa5kNQ7SZm2cj4cVw4C7K9hgkYPEqD8FHJmpgDV7Y6
+result digest: 5Q1wwhUBQscXHTW1GeELzztZvL1XHE3pfwvfLnnJNLJL
 ```
 
 ## Set config for DVN (!! mandatory !!)
