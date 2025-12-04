@@ -66,6 +66,10 @@ yarn build
 yarn test
 ```
 
+## Deploy mock coin on IOTA L1
+
+[mockcoin](./mockcoin/README.md).
+
 ## Deploy OFTAdapter or OFT contracts on EVM
 
 See [instruction](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm?tab=readme-ov-file)

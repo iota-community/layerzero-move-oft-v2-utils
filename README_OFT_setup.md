@@ -36,6 +36,15 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: AGQnzWHr4xdFkFwv98BH2D8P78HvWCzX1HK97qHMxMKE
 ```
 
+Log example on IOTA L1 testnet (init_oft_adapter) as source chain to Sui testnet as dest chain:
+
+```bash
+oft.initOftAdapterMoveCall
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: ExaMegMJjoYa9c3NnFqqLL2kJj2BpH8HwCXGkg8VbUFB
+```
+
 **Notice**
 
 After the `init` completion, the `oftInitTicketId` object will be destroyed to prevent further `init`. This means that, one `oftInitTicketId` can be used only once to `init`.
@@ -138,6 +147,16 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: 1c3K1vh9YcagqmRsXHfUfPifa1HSrZM63NnoJdkzXCm
 ```
 
+Log example on IOTA L1 testnet (init_oft_adapter) as source chain to Sui testnet as dest chain:
+
+```bash
+oft.registerOAppMoveCall
+oftComposerManagerId: 0xceb3fde61a041552f7d022ba8138a61fc3043a235029ecf266b5c3b8547b3b2e
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: BHQSK2T5oxL3SQkdCifLoDUdaQwBBpseTmaSCnAS9ssF
+```
+
 ## Set peer for OFT
 
 It's the same to set peer for either OFT or OFTAdapter.
@@ -147,7 +166,8 @@ Needed input params in [config.ts](./config.ts):
 - remoteChain
   - EID: EID of the remote chain
   - peerAddress: OFTAdapter or OFT address on the remote chain
-    - !! need to perform [deployment and setup](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm) on the dest chain !!
+    - !! need to perform **deployment and setup** on [EVM](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm) dest chain !!
+    - If dest chain is MoveVM, find the relevant instructions (e.g. [Sui](https://docs.layerzero.network/v2/developers/sui/oft/sdk))
 
 Cmd:
 
@@ -174,6 +194,19 @@ remoteChain: {
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 2rG6QXCDcwg8uFW3YzUP9fBJZL7zoYG7aFjEbc4mxqqu
+```
+
+Log example on IOTA L1 testnet (init_oft_adapter) as source chain to Sui testnet as dest chain:
+
+```bash
+oapp.setPeerMoveCall
+remoteChain: {
+  EID: 40378,
+  peerAddress: '0x2d0012a96534315f51af8782773ce8afc5df0bb46df28f034c58da6a02a18d94'
+}
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: GnL4ePaHqtC9NZkjFZ4EKPpeRJ6QqgRiFYhALvMQLyGU
 ```
 
 ## Set config for DVN (!! mandatory !!)
@@ -212,4 +245,15 @@ objUlnLib: 0x8b8083bc0e96840f20d5d0488381ef1788dd5f8a668eb5c63faccad04092a7aa
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 9Ljku96FriTFzTdC3TcZ2N1UAtPR8tRc9KLxyHgKF7oB
+```
+
+Log example on IOTA L1 testnet (init_oft_adapter) as source chain to Sui testnet as dest chain:
+
+```bash
+oapp.setConfigMoveCall
+ulnLib: 0xf87812112d8ad8329269d7445be936057651dcf96a692f32ee1d8de82296cc7d
+objUlnLib: 0xca3eb88711d4ab5587605439ea5b968d2ba1908b9162f34e9f116e5ec7edeb16
+senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
+inspectTx result: { status: 'success' }
+executeTx - Tx hash: HypKbrb3UzgdcjqeJvBYsktgi1HkeiyFE2jEe3ykPJhk
 ```

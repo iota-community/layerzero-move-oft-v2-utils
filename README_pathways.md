@@ -25,3 +25,9 @@ https://layerzeroscan.com/tx/0xb7abd5db36d8f6407c707dff2e8f08d4d11e4188a16b39f02
 https://layerzeroscan.com/tx/9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 
 ## Testnet
+
+### Existing coins on IOTA L1 to Sui testnet
+
+**From IOTA L1 to Sui testnet**
+
+https://testnet.layerzeroscan.com/tx/H3cfWVC3TEEbeGKy8ogvQJouTTs6qJEmkaBKtxaazWnw

@@ -50,8 +50,8 @@ flavor = "iota"
 
 [env.testnet]
 chain-id = "2304aa97"
-original-published-id = "0x751c3bfefb3f9d1e4e15696b0646fd3445efc77e05f088dcac24a8860e72f7d4"
-latest-published-id = "0x751c3bfefb3f9d1e4e15696b0646fd3445efc77e05f088dcac24a8860e72f7d4"
+original-published-id = "0xc998990be1a3aa976e6a02350f4f5c5576d07dc3bb31ddabb91ca3d3b467926f"
+latest-published-id = "0xc998990be1a3aa976e6a02350f4f5c5576d07dc3bb31ddabb91ca3d3b467926f"
 published-version = "1"
 
 [env.mainnet]
