@@ -2,6 +2,11 @@
 
 Implemented by IOTA Foundation.
 
+This document is adapted for Sui-related operations based on the `main` branch dedicated for IOTA.
+
+Reference:
+  - [Sui OFT](https://docs.layerzero.network/v2/developers/sui/oft/sdk)
+
 ## Introduction
 
 Utility scripts for LayerZero MoveVM OFT V2 that facilitate cross-chain sending of fungible tokens between IOTA L1 and other EVM(s).

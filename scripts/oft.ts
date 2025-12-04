@@ -1,10 +1,4 @@
-// Import OFT from npm lib
-import { OFT, SendParam } from '@layerzerolabs/lz-iotal1-oft-sdk-v2';
-
-// Or import OFT from the available source code extracted from here:
-// https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-oft-sdk-v2
-// import { OFT, SendParam } from '../iotal1-oft-sdk-v2';
-
+import { OFT, SendParam } from '@layerzerolabs/lz-sui-oft-sdk-v2';
 import {
   SDK,
   validateTransaction,
@@ -12,17 +6,20 @@ import {
   PACKAGE_ULN_302_ADDRESS,
   OBJECT_ULN_302_ADDRESS,
   PACKAGE_DVN_LAYERZERO_ADDRESS,
-} from '@layerzerolabs/lz-iotal1-sdk-v2';
+} from '@layerzerolabs/lz-sui-sdk-v2';
 import { Stage } from '@layerzerolabs/lz-definitions';
-import { Transaction } from '@iota/iota-sdk/transactions';
-import { IotaClient } from '@iota/iota-sdk/client';
-import { Ed25519Keypair } from '@iota/iota-sdk/keypairs/ed25519';
+import { Options } from '@layerzerolabs/lz-v2-utilities';
+
+import { SuiClient } from '@mysten/sui/client';
+import { Transaction } from '@mysten/sui/transactions';
+import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519';
+
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { addressToBytes32, executeTx, formatAmount } from './utils';
-import config from '../config';
 import BigNumber from 'bignumber.js';
-import { Options } from '@layerzerolabs/lz-v2-utilities';
+
+import config from '../config';
+import {addressToBytes32, formatAmount } from './utils';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -59,15 +56,15 @@ async function main() {
   } = configData;
 
   const signer = Ed25519Keypair.deriveKeypair(MNEMONIC as string);
-  const senderAddr = signer.toIotaAddress();
+  const senderAddr = signer.toSuiAddress();
 
-  const iotaClient = new IotaClient({
-    url: NETWORK === 'mainnet' ? 'https://api.mainnet.iota.cafe' : 'https://api.testnet.iota.cafe',
+  const suiClient = new SuiClient({
+    url: NETWORK === 'mainnet' ? 'https://fullnode.mainnet.sui.io:443' : 'https://fullnode.testnet.sui.io:443',
   });
 
   // Initialize LayerZero protocol SDK
   const protocolSDK = new SDK({
-    client: iotaClient,
+    client: suiClient,
     stage: NETWORK === 'mainnet' ? Stage.MAINNET : Stage.TESTNET,
   });
 
@@ -243,13 +240,8 @@ async function main() {
     tx.transferObjects([coin], senderAddr);
   }
 
-  // Can dryRun or executeTx provided by the `utils`
-  // await dryRunTx(iotaClient, senderAddr, tx);
-  await executeTx(iotaClient, signer, tx);
-
-  // Or just use the method `validateTransaction` provided by LZ
-  // const result = await validateTransaction(iotaClient, signer, tx);
-  // console.log('result:', result);
+  const result = await validateTransaction(suiClient, signer, tx);
+  console.log('result digest:', result.digest);
 }
 
 main().catch(console.error);

@@ -18,16 +18,16 @@ For `brand-new` fungible tokens to be launched, OFT standard can be leveraged to
 
 ## Deploy OFTAdapter or OFT package on IOTA MoveVM
 
-On IOTA MoveVM, both OFTAdapter and OFT contracts use the same [Move module](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/iota/contracts/oapps/oft/oft). The difference will come during the `init` process (see later section). 
+On IOTA MoveVM, both OFTAdapter and OFT contracts use the same [Move module](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/sui/contracts/oapps/oft/oft). The difference will come during the `init` process (see later section). 
 
 No config params needed, to deploy, run the following cmds
 
 ```bash
 git clone https://github.com/LayerZero-Labs/LayerZero-v2.git
 
-cd LayerZero-v2/packages/layerzero-v2/iota/contracts/oapps/oft/oft
+cd LayerZero-v2/packages/layerzero-v2/sui/contracts/oapps/oft/oft
 
-iota client publish
+sui client publish
 ```
 
 **Notice**
@@ -48,16 +48,16 @@ After deployment, take note the following created stuff as config params in the 
 
 **Run test**
 
-To run unit-test, replace the above cmd `iota client publish` with `iota move test`.
+To run unit-test, replace the above cmd `sui client publish` with `sui move test`.
 
 ## Build/test all IOTA-related Move packages
 
-To build/test [IOTA-related Move packages](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/iota/contracts), run the following cmds
+To build/test [IOTA-related Move packages](https://github.com/LayerZero-Labs/LayerZero-v2/tree/main/packages/layerzero-v2/sui/contracts), run the following cmds
 
 ```bash
 git clone https://github.com/LayerZero-Labs/LayerZero-v2.git
 
-cd LayerZero-v2/packages/layerzero-v2/iota/contracts
+cd LayerZero-v2/packages/layerzero-v2/sui/contracts
 
 yarn
 
@@ -65,7 +65,3 @@ yarn build
 
 yarn test
 ```
-
-## Deploy OFTAdapter or OFT contracts on EVM
-
-See [instruction](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm?tab=readme-ov-file)

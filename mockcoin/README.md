@@ -2,8 +2,8 @@
 
 ## Compile/build
 
-`iota move build`
+`sui move build`
 
 ## Deploy
 
-`iota client publish`
+`sui client publish`

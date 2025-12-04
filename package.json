@@ -12,11 +12,11 @@
     "send-oft": "SEND_OFT=true ts-node scripts/oft.ts"
   },
   "dependencies": {
-    "@iota/iota-sdk": "^1.6.1",
+    "@mysten/sui": "^1.45.2",
     "@layerzerolabs/devtools-move": "^1.0.14",
     "@layerzerolabs/lz-definitions": "^3.0.146",
-    "@layerzerolabs/lz-iotal1-oft-sdk-v2": "^3.0.146",
-    "@layerzerolabs/lz-iotal1-sdk-v2": "^3.0.146",
+    "@layerzerolabs/lz-sui-oft-sdk-v2": "^3.0.146",
+    "@layerzerolabs/lz-sui-sdk-v2": "^3.0.146",
     "bignumber.js": "^9.3.1",
     "dotenv": "^17.2.3",
     "got": "^14.6.4",

@@ -2,8 +2,8 @@ module mock_coin::mockcoin;
 
 // === imports ===
 
-use iota::coin::{create_currency};
-use iota::url::{Self};
+use sui::coin::{create_currency};
+use sui::url::{Self};
 
 // === Structs ===
 
@@ -16,10 +16,10 @@ const DECIMALS: u8 = 9;
 const NAME: vector<u8> = b"USDTmd";
 const SYMBOL: vector<u8> = b"USDTmd";
 const DESCRIPTION: vector<u8> = b"Mock USDT";
-const ICON_URL: vector<u8> = b"https://images.iotaspam.io/5.png";
+const ICON_URL: vector<u8> = b"https://images.iotaspam.io/7.png";
 
 fun init(witness: MOCKCOIN, ctx: &mut TxContext) {
-    let (treasury, metadata) = create_currency(
+    let (mut treasury, metadata) = create_currency(
         witness,
         DECIMALS,
         SYMBOL,
@@ -28,6 +28,10 @@ fun init(witness: MOCKCOIN, ctx: &mut TxContext) {
         option::some(url::new_unsafe_from_bytes(ICON_URL)),
         ctx,
     );
+    
+    let minted_coin = treasury.mint(5000_000_000_000, ctx);
+    transfer::public_transfer(minted_coin, ctx.sender());
+
     transfer::public_freeze_object(metadata);
     transfer::public_transfer(treasury, ctx.sender());
 }

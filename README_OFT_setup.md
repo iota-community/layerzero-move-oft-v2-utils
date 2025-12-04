@@ -44,8 +44,6 @@ Set the `oftObjectId` (from the tx hash on block explorer) in the file `config.t
 
 ### Init as OFT on IOTA L1 as dest chain
 
-**For newly-deployed coins**
-
 Go in the folder `mockcoin` to deploy a new coin if needed.
 
 Needed input params in [config.ts](./config.ts):
@@ -84,6 +82,13 @@ oft.initOftMoveCall
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: DJgejLkMmBxcRa4eBtE2HV3FH6BygsQATN4C8jU6NqPc
+```
+
+Log example on Sui testnet as dest chain:
+
+```bash
+oft.initOftMoveCall
+result.digest: EVgaS2LXdHZUycayu5nVWCQkfdPbnKfvS66zFLboVtPG
 ```
 
 **Notice**
@@ -138,6 +143,14 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: 1c3K1vh9YcagqmRsXHfUfPifa1HSrZM63NnoJdkzXCm
 ```
 
+Log example on Sui testnet as dest chain:
+
+```bash
+oft.registerOAppMoveCall
+oftComposerManagerId: 0x90384f5f6034604f76ac99bbdd25bc3c9c646a6e13a27f14b530733a8e98db99
+result digest: CqFAT2iwPnXihpFjq3p7oJsSRL7PTzkC9rTdoDt5WoPm
+```
+
 ## Set peer for OFT
 
 It's the same to set peer for either OFT or OFTAdapter.
@@ -176,6 +189,17 @@ inspectTx result: { status: 'success' }
 executeTx - Tx hash: 2rG6QXCDcwg8uFW3YzUP9fBJZL7zoYG7aFjEbc4mxqqu
 ```
 
+Log example on Sui testnet as dest chain:
+
+```
+oapp.setPeerMoveCall
+remoteChain: {
+  EID: 40378,
+  peerAddress: '0xed7133e37b167b761b189b2e7a1dcf1a557c1ae5e9757c03ab89a455878e8f50'
+}
+result digest: HaPa5kNQ7SZm2cj4cVw4C7K9hgkYPEqD8FHJmpgDV7Y6
+```
+
 ## Set config for DVN (!! mandatory !!)
 
 It's the same to set config for either OFT or OFTAdapter.
@@ -212,4 +236,13 @@ objUlnLib: 0x8b8083bc0e96840f20d5d0488381ef1788dd5f8a668eb5c63faccad04092a7aa
 senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 9Ljku96FriTFzTdC3TcZ2N1UAtPR8tRc9KLxyHgKF7oB
+```
+
+Log example on Sui testnet as dest chain:
+
+```
+oapp.setConfigMoveCall
+ulnLib: 0xf5d69c7b0922ce0ab4540525fbc66ca25ce9f092c64b032b91e4c5625ea0fb24
+objUlnLib: 0x69541d4feeb08cdd3b20b3502021a676eea0fca4f47d46e423cdc9686df406ff
+result digest: x2KYdthZvkQJEnbed3Qrfpj4u9XKTFssW99vMvHTUpi
 ```

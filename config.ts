@@ -1,31 +1,31 @@
-// Pathway from Arbitrum EVM (OFTAdapter) to IOTA L1 mainnet
+// Pathway from IOTA L1 testnet (init_oft_adapter) to Sui testnet
 
 export default {
   testnet: {
     sharedDecimals: 6,
     oft: {
-      oftPackageId: '',
-      oappObjectId: '',
-      upgradeCap: '',
-      oftInitTicketId: '',
+      oftPackageId: '0xd8c65e370e22e7d5c0abc7ed58703f30b8cce39410faed79dffdc5d79ce56c04',
+      oappObjectId: '0x1e58b8fdbb33a7d1ffe686856c24d5be89887388452398e9035b07a6bf20ed60',
+      upgradeCap: '0xb3b427c605536615d04cbf9da68a0fd693bd40bbc414e6a2fa7a7be4972958ab',
+      oftInitTicketId: '0x492cae9af0d98c085e15f3d00ee88ee7959f05cadac9053fee069bb12d9220fe',
     },
     coin: {
-      coinPackage: '',
-      coinType: '',
+      coinPackage: '0xafefb0ff0b3e18b29e6162dd9cb944dfed6f61823095214df0ceaa159c66b6db',
+      coinType: '0xafefb0ff0b3e18b29e6162dd9cb944dfed6f61823095214df0ceaa159c66b6db::mockcoin::MOCKCOIN',
       coinDecimals: 9,
-      upgradeCap: '',
-      treasuryCapId: '',
-      metadataId: '',
+      upgradeCap: '0xd2607eb149c62f02d6b1745528e4d14f4c391e0a945dcb725a7772f7fe05964a',
+      treasuryCapId: '0x86dd0d9a3e3fd3dbf96bb9444a1b097151c5c297cb38d182e16f9407bacdd77c',
+      metadataId: '0x19ac963749ab0be1b47601a3c8b15ef1f7331d75ebf87245f3cc05ae38c5f141',
     },
-    oftObjectId: '',
-    oftComposerManagerId: '',
+    oftObjectId: '0xd1409db010bfde996f66e1f79c11dabbccd63e34a5da9e8649d2350200eddbce',
+    oftComposerManagerId: '0x90384f5f6034604f76ac99bbdd25bc3c9c646a6e13a27f14b530733a8e98db99',
     remoteChain: {
-      EID: 40161,
-      peerAddress: '',
+      EID: 40378, // Sui testnet
+      peerAddress: '0xed7133e37b167b761b189b2e7a1dcf1a557c1ae5e9757c03ab89a455878e8f50',
     },
     setConfig: {
       // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
-      DVNs: [],
+      DVNs: ['0x1356fef0c7325536e289e53cc545219cbfbd1490ed762c8d8efb97efa6cfb856'],
       confirmations: 0,
     },
   },
