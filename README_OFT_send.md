@@ -68,3 +68,35 @@ senderAddr: 0xd3906909a7bfc50ea9f4c0772a75bc99cd0da938c90ec05a556de1b5407bd639
 inspectTx result: { status: 'success' }
 executeTx - Tx hash: 9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 ```
+
+### For the testnet pathway from IOTA L1 to Sui, this is to send back the received OFT on Sui testnet to IOTA L1.
+
+Log example:
+
+```
+oft.quoteSend and oft.sendMoveCall
+oftQuote: {
+  limit: { minAmountLd: 0n, maxAmountLd: 18446744073709551615n },
+  feeDetails: [],
+  receipt: { amountSentLd: 200000000n, amountReceivedLd: 200000000n }
+}
+No OFT fees
+messagingFee: { nativeFee: 13618296n, zroFee: 0n }
+result digest: CLK33hBTJdfc4bNXrxXgKXTaTsG8fnECwGhBpD3Fhqz9
+```
+
+### For the mainnet pathway, send brand-new OFT from Sui to IOTA L1
+
+Log example:
+
+```
+oft.quoteSend and oft.sendMoveCall
+oftQuote: {
+  limit: { minAmountLd: 0n, maxAmountLd: 18446744073709551615n },
+  feeDetails: [],
+  receipt: { amountSentLd: 1200000000n, amountReceivedLd: 1200000000n }
+}
+No OFT fees
+messagingFee: { nativeFee: 82785814n, zroFee: 0n }
+result digest: 6CdWkpFZbhPro4w8eWvhDtwd6x3g8qqMVc9UVVVYqF5L
+```

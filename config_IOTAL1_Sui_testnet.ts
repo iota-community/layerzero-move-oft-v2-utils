@@ -1,4 +1,4 @@
-// Mainnet Pathway from Sui (init_oft) to IOTA L1
+// Pathway from IOTA L1 testnet (init_oft_adapter) to Sui testnet
 
 export default {
   testnet: {
@@ -32,32 +32,33 @@ export default {
   mainnet: {
     sharedDecimals: 6,
     oft: {
-      oftPackageId: '0x9bf74c4201dff357c04c3a8672808efba8b3e9b7b75a47bef83094677678cb70',
-      oappObjectId: '0x4e9f588980217d6228c7b483d498c77fdd5b2c7950e4783af22761531fce4935',
-      upgradeCap: '0x106ad1767886711dfde6af1418fd16e172866320d9a5d9a7ac56b2aee8e94525',
-      oftInitTicketId: '0x0bedbedd7bdc52be8c3755b115c5aac1be536fba8081e4501fda4fa019625e20',
+      oftPackageId: '0xed312b3f38559d4cb042f5314cbedef8d52b96c6ddb138560a01f71a6e69b82e',
+      oappObjectId: '0x971f7b0a144a5850b789c257273f63f4b2a088ee70eb7b32300d33ad32b8378c',
+      upgradeCap: '0xc38fc8d73820ee51a6c1f5a5aee41819bfd854e662a5f2f36b41ff68ae1cf4e1',
+      oftInitTicketId: '0xdb2d18701eef0844f9f9ed8aa01ffc665624d77731f032e77fb635f1d2db3127',
     },
     coin: {
-      coinPackage: '0x54e4dcc064c3d0089ed8868412b8ed9d4757e547724f9906cab8b6f8d64025d3',
+      coinPackage: '0x3fd84826fb981ecb842cfb1950e99568d2ff66d8e9182fca5ea4e8fb52d2f03f',
       coinType:
-        '0x54e4dcc064c3d0089ed8868412b8ed9d4757e547724f9906cab8b6f8d64025d3::mockcoin::MOCKCOIN',
+        '0x3fd84826fb981ecb842cfb1950e99568d2ff66d8e9182fca5ea4e8fb52d2f03f::mockcoin::MOCKCOIN',
       coinDecimals: 9,
-      upgradeCap: '0xb9e4d2cb46a232cf43eba05654feb2cc6b9b50ad22fca513d8df6ba971190e1c',
-      treasuryCapId: '0x2d2a1646ff9206b6516fbd4b5e19d2b3cc189c217df81955ca79c4dd7b9a7578',
-      metadataId: '0xa1ef04811c20c01bf518e661c9443f5fb75f62998e853b866cb4433b9e53bf5c',
+      upgradeCap: '0x9a96a64e5db8c80685db1e516b439bd90f3caa66a6247d8865b3eb3a7fb64376',
+      treasuryCapId: '0x416a56f0640dbbd842cb5cd8baaa0543d17f229624ec4b05848277df990c6ed8',
+      metadataId: '0xb142b6484da26bbc8680c423baa144ec59959a0aceeaa735b57edcfac0b90950',
     },
-    oftObjectId: '0xeac2d18cbb0b124657260791354fbe4f2c4de8451b7e805402af0deb78e5ea91',
-    oftComposerManagerId: '0xfbece0b75d097c31b9963402a66e49074b0d3a2a64dd0ed666187ca6911a4d12',
+    oftObjectId: '0x91a51f55bdc94627ac281db6bda9a8c16ac6ae38f5f6170449b60cc2b703284f',
+    oftComposerManagerId: '0xfe5be5a2d5b11e635e3e4557bb125fb24a3dd09111eded06fd6058b2aee1d054',
     remoteChain: {
-      EID: 30423, // IOTAL1 mainnet
-      peerAddress: '0x7a5630ec93559767db87c6c0a4aca981b3e3eeb94c3b4d07af22b37621e2d3d8',
+      EID: 30110,
+      peerAddress: '0x50721AaD21A49b1024E985Bd99d4904326d9b951',
     },
     setConfig: {
-      // The `DVNs` (on the current chain) set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: [
-        '0x52aa129049de845353484868d1be6e2df6878b0ed2213d94d3c827309aeae685', // LZ Labs
+        '0xa560697328ccb5dc3f3f8e8a2c41e282827060da7a29971d933e9aa405c2ba7f', // LZ Labs
+        '0x50e159c13f1222f7eea85c718f67b20146ef2485f844b23ffa15719adc97080a', // Nethermind
       ],
-      confirmations: 1,
+      confirmations: 25,
     },
   },
 };

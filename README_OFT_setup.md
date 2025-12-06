@@ -42,9 +42,13 @@ After the `init` completion, the `oftInitTicketId` object will be destroyed to p
 
 Set the `oftObjectId` (from the tx hash on block explorer) in the file `config.ts` for next step.
 
-### Init as OFT on IOTA L1 as dest chain
+### Init as OFT on IOTA L1 as dest chain or as source chain
 
-Go in the folder `mockcoin` to deploy a new coin if needed.
+No matter init OFT on dest chain or on source chain (for brand-new coin), it is needed to deploy a new coin whose `treasuryCap` will be passed to and thus owned by the OFT object which will control the minting/burning.
+
+Go in the folder `mockcoin` (adapt the current Move code if needed) to deploy a new coin if needed. 
+
+In case of init OFT as brand-new coin on source chain, make the `mockcoin` mint some amount of coins to have some coin supply. The current `mockcoin` Move code will mint to 5000 coins to the deployer account.
 
 Needed input params in [config.ts](./config.ts):
 
@@ -89,6 +93,13 @@ Log example on Sui testnet as dest chain:
 ```bash
 oft.initOftMoveCall
 result.digest: BLozaQr2vLxfQvTgXLCNdGpQ8p2oDYqidbu3mnMuTfJ
+```
+
+Log example on Sui mainnet as source chain:
+
+```bash
+oft.initOftMoveCall
+result digest: 7T49XFU5UrTh8yn1Exdouya84Z1G9NPAZRHv9xfSHGbK
 ```
 
 **Notice**
@@ -151,6 +162,14 @@ oftComposerManagerId: 0x90384f5f6034604f76ac99bbdd25bc3c9c646a6e13a27f14b530733a
 result digest: EfVGVyg2zsA8iKzxzkUUkBPitZWTdso5mkqXYoQ8QwGs
 ```
 
+Log example on Sui mainnet as source chain:
+
+```bash
+oft.registerOAppMoveCall
+oftComposerManagerId: 0xfbece0b75d097c31b9963402a66e49074b0d3a2a64dd0ed666187ca6911a4d12
+result digest: 3Q4yNmf73DLu5S5uB6hgYEhWpk4ZWgWJd154yMo4irfQ
+```
+
 ## Set peer for OFT
 
 It's the same to set peer for either OFT or OFTAdapter.
@@ -200,6 +219,17 @@ remoteChain: {
 result digest: 5Q1wwhUBQscXHTW1GeELzztZvL1XHE3pfwvfLnnJNLJL
 ```
 
+Log example on Sui mainnet as source chain:
+
+```
+oapp.setPeerMoveCall
+remoteChain: {
+  EID: 30423,
+  peerAddress: '0x7a5630ec93559767db87c6c0a4aca981b3e3eeb94c3b4d07af22b37621e2d3d8'
+}
+result digest: 2XFHAnfzbwxnL9vbf7baccXmdYPk594tKqAfy3AyGfMg
+```
+
 ## Set config for DVN (!! mandatory !!)
 
 It's the same to set config for either OFT or OFTAdapter.
@@ -208,9 +238,9 @@ It's the same to set config for either OFT or OFTAdapter.
 
 Needed input params in [config.ts](./config.ts):
 
-- setConfig
-  - `DVNs`: The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
-  - `confirmations`
+- `setConfig`:
+  - `DVNs` (on the current chain): The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+  - `confirmations`: must be at least `1` and value on source chain must be >= value on dest chain.
 
 Cmd:
 
@@ -245,4 +275,13 @@ oapp.setConfigMoveCall
 ulnLib: 0xf5d69c7b0922ce0ab4540525fbc66ca25ce9f092c64b032b91e4c5625ea0fb24
 objUlnLib: 0x69541d4feeb08cdd3b20b3502021a676eea0fca4f47d46e423cdc9686df406ff
 result digest: x2KYdthZvkQJEnbed3Qrfpj4u9XKTFssW99vMvHTUpi
+```
+
+Log example on Sui mainnet as source chain:
+
+```
+oapp.setConfigMoveCall
+ulnLib: 0x3ce7457bed48ad23ee5d611dd3172ae4fbd0a22ea0e846782a7af224d905dbb0
+objUlnLib: 0x8ebd7a0b102a5f7a3d4a08d84dd853fecc4ae0093be6eb02cf0d11dce7d4861f
+result digest: E3z2hf4LnUbzooi7TEMd2xMLDJEfEnwFJzZcCCJLxk5R
 ```
