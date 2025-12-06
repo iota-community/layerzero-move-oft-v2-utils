@@ -24,7 +24,7 @@ export default {
       peerAddress: '0xE03934D55A6d0f2Dc20759A1317c9Dd8f9D683cA',
     },
     setConfig: {
-      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+      // The `DVNs` (on the current chain) set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: [],
       confirmations: 0,
     },
@@ -52,7 +52,7 @@ export default {
       peerAddress: '',
     },
     setConfig: {
-      // The `DVNs` set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
+      // The `DVNs` (on the current chain) set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
       DVNs: [],
       confirmations: 0,
     },

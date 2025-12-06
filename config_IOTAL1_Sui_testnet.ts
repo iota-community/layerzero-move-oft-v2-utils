@@ -1,4 +1,4 @@
-// Mainnet Pathway from Sui (init_oft) to IOTA L1
+// Pathway from IOTA L1 testnet (init_oft_adapter) to Sui testnet
 
 export default {
   testnet: {
@@ -11,8 +11,7 @@ export default {
     },
     coin: {
       coinPackage: '0xc998990be1a3aa976e6a02350f4f5c5576d07dc3bb31ddabb91ca3d3b467926f',
-      coinType:
-        '0xc998990be1a3aa976e6a02350f4f5c5576d07dc3bb31ddabb91ca3d3b467926f::mockcoin::MOCKCOIN',
+      coinType: '0xc998990be1a3aa976e6a02350f4f5c5576d07dc3bb31ddabb91ca3d3b467926f::mockcoin::MOCKCOIN',
       coinDecimals: 9,
       upgradeCap: '0x2fec9298b529511b1c591dd05b83da983d961860d78c93630d1fed96bd18fd16',
       treasuryCapId: '0x961a202d88e0e9f8e4ef920100ffb99801222e50e636d05fe61caea188f34f28',
@@ -33,30 +32,29 @@ export default {
   mainnet: {
     sharedDecimals: 6,
     oft: {
-      oftPackageId: '0x7a5630ec93559767db87c6c0a4aca981b3e3eeb94c3b4d07af22b37621e2d3d8',
-      oappObjectId: '0xdf1a95c844eddd3437d6d6366c379c235f74d741c393f383df39c0ffd2317d6c',
-      upgradeCap: '0x1212004f521102e3f04e9d1de4775f52a1e738a5178896d83ac1ca84d7df06eb',
-      oftInitTicketId: '0xe0a966501e1aeb166976f4370ac8361c784d364ab1a0ece7e34a1a0533c5baf1',
+      oftPackageId: '',
+      oappObjectId: '',
+      upgradeCap: '',
+      oftInitTicketId: '',
     },
     coin: {
-      coinPackage: '0x26f5b35d5aafda296ff26058831ec15bb270d71f9026c9c0dc160041732183a1',
-      coinType:
-        '0x26f5b35d5aafda296ff26058831ec15bb270d71f9026c9c0dc160041732183a1::mockcoin::MOCKCOIN',
+      coinPackage: '',
+      coinType: '',
       coinDecimals: 9,
-      upgradeCap: '0x4f9ef4536c42ccebdbbb3bc957f1862fd90a9a602dc56b8fbda64a476cd88c54',
-      treasuryCapId: '0x5d68cc2ebe3cdc15397a47da4e8903bb1987d4ce1321f97e50f73f005d24871c',
-      metadataId: '0x00d777743e45946993b3752329538397fe432b6e92ab1050b58bd53821f555b0',
+      upgradeCap: '',
+      treasuryCapId: '',
+      metadataId: '',
     },
-    oftObjectId: '0xbaea4086f3b2d55d31eb6f3671e45e03ad297c59ba78b8a51b61133a99f0e125',
-    oftComposerManagerId: '0xfe5be5a2d5b11e635e3e4557bb125fb24a3dd09111eded06fd6058b2aee1d054',
+    oftObjectId: '',
+    oftComposerManagerId: '',
     remoteChain: {
-      EID: 30378, // Sui mainnet
-      peerAddress: '0x9bf74c4201dff357c04c3a8672808efba8b3e9b7b75a47bef83094677678cb70',
+      EID: 30110,
+      peerAddress: '',
     },
     setConfig: {
       // The `DVNs` (on the current chain) set must be the same on both of the current chain and remote chain. Otherwise, the tx will get `inflight`.
-      DVNs: ['0xa560697328ccb5dc3f3f8e8a2c41e282827060da7a29971d933e9aa405c2ba7f'], // LZ Labs
-      confirmations: 1,
+      DVNs: [],
+      confirmations: 25,
     },
   },
 };

@@ -6,7 +6,7 @@ Implemented by IOTA Foundation.
 
 Utility scripts for LayerZero MoveVM OFT V2 that facilitate cross-chain sending of fungible tokens between IOTA L1 and other EVM(s).
 
-This document focuses on the MoveVM of the IOTA L1 `testnet` based on this [reference](https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-oft-sdk-v2) while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm).
+This document focuses on the MoveVM of the IOTA L1 based on this [reference](https://www.npmjs.com/package/@layerzerolabs/lz-iotal1-oft-sdk-v2) while the EVM-related instructions can be found at [here](https://github.com/iota-community/layerzero-oft-v2-utils/tree/movevm).
 
 For installation, run the cmd `yarn`.
 

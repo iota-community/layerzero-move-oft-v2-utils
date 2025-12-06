@@ -24,6 +24,16 @@ https://layerzeroscan.com/tx/0xb7abd5db36d8f6407c707dff2e8f08d4d11e4188a16b39f02
 
 https://layerzeroscan.com/tx/9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 
+### Brand-new OFT on Sui to IOTA L1
+
+**From Sui to IOTA L1**
+
+https://layerzeroscan.com/tx/6CdWkpFZbhPro4w8eWvhDtwd6x3g8qqMVc9UVVVYqF5L
+
+**From IOTA L1 back to Sui**
+
+https://layerzeroscan.com/tx/77364jpdNA63vuHEFX3VqS1GY4hYiqKYV3QLva4n3rkn
+
 ## Testnet
 
 ### Existing coins on IOTA L1 to Sui testnet
@@ -31,3 +41,7 @@ https://layerzeroscan.com/tx/9QhCbuF9i4M863nERyFCd1cHqVggZfgTEetTY5Tny9WW
 **From IOTA L1 to Sui testnet**
 
 https://testnet.layerzeroscan.com/tx/H3cfWVC3TEEbeGKy8ogvQJouTTs6qJEmkaBKtxaazWnw
+
+**From Sui testnet back to IOTA L1**
+
+https://testnet.layerzeroscan.com/tx/CLK33hBTJdfc4bNXrxXgKXTaTsG8fnECwGhBpD3Fhqz9
